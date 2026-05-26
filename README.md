@@ -75,14 +75,15 @@ The overall workflow includes:
 <img width="549" height="426" alt="Figure 3 3" src="https://github.com/user-attachments/assets/94f7bbba-9088-4cbf-b45a-cf86ac43bc44" />
 
 ---
+## Autonomous AI Monitoring Workflow
 
-## Physics-Informed Validation Layer
 
 <img width="565" height="331" alt="image" src="https://github.com/user-attachments/assets/81fc75c6-46a9-411a-affa-c7bce2e3cbff" />
 
 ---
 
-## Autonomous AI Monitoring Workflow
+
+## Physics-Informed Validation Layer
 
 <img width="1536" height="1024" alt="Figure 3 8" src="https://github.com/user-attachments/assets/75156e30-5e03-44e9-93de-96651e1725de" />
 
@@ -351,14 +352,23 @@ The proposed system demonstrates strong performance across multiple disaster dom
 ---
 
 ## Satellite Segmentation Output
+<img width="811" height="372" alt="image" src="https://github.com/user-attachments/assets/4800a9e0-8d33-4588-9f6f-7cd5d192688a" />
 
-(Add segmentation output images here)
+<img width="867" height="575" alt="image" src="https://github.com/user-attachments/assets/62d9fd0e-1f27-4952-b332-967f421ab4be" />
+
+<img width="940" height="423" alt="image" src="https://github.com/user-attachments/assets/507cf625-4639-4690-808a-70b634618e6c" />
+
 
 ---
 
 ## Drift Detection Monitoring
 
-(Add monitoring screenshots here)
+<img width="1744" height="625" alt="image" src="https://github.com/user-attachments/assets/70b5d397-1a4e-471c-88aa-4811d7f728e1" />
+<img width="1728" height="542" alt="image" src="https://github.com/user-attachments/assets/5b9f86f5-3d27-4ccc-b8de-5cbfdd5b2e05" />
+<img width="1735" height="644" alt="image" src="https://github.com/user-attachments/assets/5db6a99f-ba9a-47f6-b5e0-8d84ee1b7595" />
+<img width="1748" height="553" alt="image" src="https://github.com/user-attachments/assets/cb0753d9-93a8-4c9c-850a-32647489f430" />
+<img width="965" height="400" alt="image" src="https://github.com/user-attachments/assets/fa02b777-5c64-4390-9f42-54e3a3df0a6a" />
+
 
 ---
 
