@@ -1,10 +1,39 @@
 # Multimodal Disaster Intelligence System
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![Framework](https://img.shields.io/badge/Framework-PyTorch%20%7C%20LightGBM-orange?logo=pytorch)
+![Platform](https://img.shields.io/badge/Platform-Google%20Colab-yellow?logo=googlecolab)
+![Conference](https://img.shields.io/badge/Published-ICRETM%202026-blueviolet)
+![Stars](https://img.shields.io/github/stars/SHANMUGAAPRIYANM/Multimodal-Disaster-Intelligence-System?style=social)
+
 An autonomous multimodal AI framework for disaster prediction, satellite flood segmentation, physics-informed validation, ensemble fusion, and adaptive monitoring across earthquake, cyclone, wildfire, and flood events.
+
+> 📄 **Research paper published in proceedings of ICRETM 2026** — 6th International Conference on Recent Trends in Engineering Technology and Management.
 
 ---
 
-# 1. Overview
+## Table of Contents
+
+- [Overview](#1-overview)
+- [Problem Statement](#2-problem-statement)
+- [Architecture](#3-architecture)
+- [Repository Structure](#repository-structure)
+- [Datasets](#4-datasets)
+- [Models Used](#5-models-used)
+- [Training Pipeline](#6-training-pipeline)
+- [Evaluation Metrics](#7-evaluation-metrics)
+- [Results](#8-results)
+- [Screenshots / Outputs](#9-screenshots--outputs)
+- [Future Improvements](#10-future-improvements)
+- [Tech Stack](#11-tech-stack)
+- [How to Run](#12-how-to-run)
+- [Conclusion](#conclusion)
+
+---
+
+## 1. Overview
 
 Natural disasters such as earthquakes, floods, cyclones, and wildfires cause severe human, economic, and environmental losses every year. Existing disaster prediction systems are often limited to single-modality analysis and lack adaptive intelligence mechanisms for continuous monitoring and self-improvement.
 
@@ -23,7 +52,7 @@ The proposed system aims to move beyond static prediction pipelines and towards 
 
 ---
 
-# 2. Problem Statement
+## 2. Problem Statement
 
 Traditional disaster prediction systems suffer from several major limitations:
 
@@ -48,7 +77,7 @@ The objective is to improve prediction accuracy, robustness, scalability, and lo
 
 ---
 
-# 3. Architecture
+## 3. Architecture
 
 The proposed architecture consists of multiple interconnected modules operating in a closed-loop intelligent prediction pipeline.
 
@@ -64,85 +93,117 @@ The overall workflow includes:
 
 ---
 
-## High-Level System Architecture
+### High-Level System Architecture
 
-<img width="489" height="727" alt="Figure 3 1" src="https://github.com/user-attachments/assets/8be9646b-fe8b-4b95-b270-e38f2647ee03" />
-
----
-
-## Multimodal Fusion Architecture
-
-<img width="549" height="426" alt="Figure 3 3" src="https://github.com/user-attachments/assets/94f7bbba-9088-4cbf-b45a-cf86ac43bc44" />
-
----
-## Autonomous AI Monitoring Workflow
-
-
-<img width="565" height="331" alt="image" src="https://github.com/user-attachments/assets/81fc75c6-46a9-411a-affa-c7bce2e3cbff" />
+![System Architecture](Architecture%20Diagram%20/Figure%203%201.PNG)
 
 ---
 
+### Multimodal Fusion Architecture
 
-## Physics-Informed Validation Layer
-
-<img width="1536" height="1024" alt="Figure 3 8" src="https://github.com/user-attachments/assets/75156e30-5e03-44e9-93de-96651e1725de" />
+![Fusion Architecture](Architecture%20Diagram%20/Figure%203%203.PNG)
 
 ---
 
-# 4. Datasets
+### Autonomous AI Monitoring Workflow
+
+![Monitoring Workflow](Architecture%20Diagram%20/autonomous_monitoring.png)
+
+---
+
+### Physics-Informed Validation Layer
+
+![Physics Gate](Architecture%20Diagram%20/Figure%203%208.PNG)
+
+---
+
+## Repository Structure
+
+```
+📁 Multimodal-Disaster-Intelligence-System/
+│
+├── 📁 Source/
+│   └── Multimodal_Disaster_Intelligence_System.ipynb   # Full end-to-end pipeline notebook
+│       ├── Section 1  — Data Ingestion & Preprocessing
+│       ├── Section 2  — Feature Engineering
+│       ├── Section 3  — Earthquake Specialist LightGBM
+│       ├── Section 4  — Wildfire Specialist LightGBM
+│       ├── Section 5  — Cyclone Specialist LightGBM
+│       ├── Section 6  — Flood Specialist LightGBM
+│       ├── Section 7  — Sentinel-2 Satellite Flood Segmentation (UNet & SegFormer-Lite)
+│       ├── Section 8  — Physics-Informed Hybrid Scoring (Saffir-Simpson & FWI Gates)
+│       ├── Section 9  — Leakage-Free Fusion Meta-LightGBM
+│       ├── Section 10 — Multimodal Prediction Output
+│       └── Section 11 — Autonomous AI Scientist Monitoring Loop (KL-Divergence)
+│
+├── 📁 Architecture Diagram/
+│   ├── Figure 3 1.PNG     — High-level system architecture
+│   ├── Figure 3 3.PNG     — Multimodal fusion architecture
+│   ├── Figure 3 8.PNG     — Physics-informed validation layer
+│   └── autonomous_monitoring.png — Autonomous monitoring workflow
+│
+├── requirements.txt        # All Python dependencies with pinned versions
+├── LICENSE                 # MIT License
+└── README.md               # This file
+```
+
+---
+
+## 4. Datasets
 
 The system utilizes multiple real-world open-source datasets collected from internationally recognized scientific organizations.
 
-| Dataset | Purpose | Source |
-|---|---|---|
-| USGS Earthquake Dataset | Earthquake prediction | USGS |
-| IBTrACS | Cyclone prediction | NOAA |
-| NASA FIRMS | Wildfire prediction | NASA |
-| ERA5 / Open-Meteo | Climate and weather analysis | ECMWF |
-| WorldFloods v1.0 | Flood segmentation | SpaceML |
-| EM-DAT | Disaster ground truth labeling | EM-DAT |
+| Dataset | Purpose | Source | Records |
+|---|---|---|---|
+| USGS Earthquake Dataset | Earthquake prediction | USGS | 112,291 |
+| IBTrACS v04r00 | Cyclone prediction | NOAA | 291,780 |
+| NASA FIRMS VIIRS | Wildfire prediction | NASA | 2,153 events |
+| ERA5 / Open-Meteo | Climate and weather analysis | ECMWF | 10,958 daily |
+| WorldFloods v1.0 | Flood segmentation | SpaceML | 37 images |
+| EM-DAT | Disaster ground truth labeling | EM-DAT | 16,747 records |
 
 ---
 
-## Dataset Characteristics
+### Dataset Characteristics
 
-### Earthquake Dataset
-- 112,291 seismic records
-- Magnitude, depth, latitude, longitude features
+#### Earthquake Dataset
+- 112,291 seismic records (M ≥ 4.5, global, 2010–2024)
+- Features: magnitude, depth, latitude, longitude, energy, ring-of-fire flag
 
-### Cyclone Dataset
-- 291,780 cyclone observations
-- Wind speed, pressure, SST proxy features
+#### Cyclone Dataset
+- 291,780 cyclone observations from IBTrACS
+- Features: wind speed, pressure drop, SST proxy, cyclone energy
 
-### Wildfire Dataset
-- Active fire observations from NASA FIRMS
-- Fire radiative power and environmental indicators
+#### Wildfire Dataset
+- Active fire observations from NASA FIRMS VIIRS
+- Features: fire radiative power, brightness temperature, detection confidence
 
-### Flood Dataset
-- Hydrological and precipitation features
-- Multi-temporal rainfall accumulation
+#### Flood Dataset
+- Hydrological and precipitation features (Open-Meteo ERA5)
+- Multi-temporal rainfall accumulation: 3-day, 7-day, 30-day windows
 
-### Satellite Dataset
-- Sentinel-2 multispectral imagery
-- Flood masks from WorldFloods v1.0
+#### Satellite Dataset
+- Sentinel-2 NIR + SWIR1 multispectral imagery
+- Flood masks from WorldFloods v1.0 (37 real images)
 
 ---
 
-# 5. Models Used
+## 5. Models Used
 
 The system combines multiple machine learning and deep learning models.
 
 | Model | Purpose |
 |---|---|
-| LightGBM | Specialist disaster prediction |
-| UNet | Flood image segmentation |
+| LightGBM (×4 specialists) | Specialist disaster prediction |
+| UNet (7.76M params) | Flood image segmentation |
+| SegFormer-Lite (2.80M params) | Lightweight flood segmentation |
 | Fusion Meta-LightGBM | Ensemble fusion learning |
-| Optuna | Hyperparameter optimization |
-| Drift Detection Models | Distribution shift monitoring |
+| Optuna | Hyperparameter optimization (50 trials, 5-fold CV) |
+| KL-Divergence Monitor | Distribution shift detection |
 
 ---
 
-## LightGBM Specialist Models
+### LightGBM Specialist Models
 
 Four independent LightGBM specialist models are trained for:
 
@@ -153,117 +214,96 @@ Four independent LightGBM specialist models are trained for:
 
 LightGBM is selected because of:
 - High accuracy on tabular data
-- Fast training speed
-- Low memory usage
-- Strong generalization capability
+- Fast training speed with histogram-based split finding
+- Strong generalization on limited samples
+- Effective handling of class imbalance with SMOTE
 
 ---
 
-## UNet Segmentation Model
+### UNet Segmentation Model
 
-UNet is used for flood-region segmentation from Sentinel-2 satellite images.
+UNet (7.76M parameters) is used for flood-region segmentation from Sentinel-2 satellite images, using a symmetric encoder-decoder architecture with skip connections.
 
-The model performs:
-- Pixel-level classification
-- Spatial flood extraction
-- Satellite feature learning
+Loss function: `L = 0.5 × BCE + 0.5 × Dice`
 
 UNet was selected because:
-- Works efficiently on small datasets
-- Strong localization capability
-- Widely adopted in medical and remote sensing segmentation tasks
+- Works efficiently on small datasets (25 training images)
+- Strong spatial localization via skip connections
+- Proven performance in remote sensing segmentation tasks
 
 ---
 
-## Fusion Meta-Learning
+### Physics-Informed Hybrid Scoring
 
-Outputs from all specialist models are combined using a Fusion Meta-LightGBM architecture.
+A physics gate is applied after ML scoring using:
+- **Saffir-Simpson scale** for cyclone confidence floors (Category 1–5)
+- **Fire Weather Index (FWI)** for wildfire confidence floors
 
-The fusion model:
-- Integrates multimodal predictions
-- Handles compound disaster scenarios
-- Improves overall robustness
+```
+score_final = max(P_ML(y|x), floor_physics(x))
+```
 
----
-
-# 6. Training Pipeline
-
-The training workflow follows a structured multimodal learning pipeline.
+This prevents ML uncertainty from suppressing alerts for physically unambiguous extreme events.
 
 ---
 
-## Step 1: Data Collection
+### Fusion Meta-Learning
 
-Environmental, climate, seismic, and satellite datasets are collected from multiple public repositories.
+Outputs from all specialist models are combined using a leakage-free Fusion Meta-LightGBM.
+
+The 9-dimensional meta-feature vector:
+```
+φ(x) = [P_EQ, P_WF, P_CY, P_FL, P_CY·P_FL, P_EQ·P_FL, max_d, mean_d, std_d]
+```
+
+Interaction features explicitly capture compound disaster signals (cyclone-induced flooding, earthquake-triggered tsunamis).
 
 ---
 
-## Step 2: Data Preprocessing
+## 6. Training Pipeline
 
-Preprocessing includes:
+### Step 1: Data Collection
+Environmental, climate, seismic, and satellite datasets collected from public repositories (USGS, IBTrACS, NASA FIRMS, Open-Meteo, WorldFloods).
+
+### Step 2: Data Preprocessing
 - Missing value handling
-- Normalization
-- Temporal alignment
+- Normalization and temporal alignment
 - Feature extraction
-- Label generation
+- Ground truth label generation from EM-DAT (zero data leakage design)
+
+### Step 3: Feature Engineering
+
+| Specialist | Features (n) | Key Engineered Features |
+|---|---|---|
+| Earthquake | 11 | mag², log(depth), log(energy), ring-of-fire, recent quake count |
+| Wildfire | 5 | Brightness temp, FRP, detection confidence, lat/lon |
+| Cyclone | 9 | Pressure drop ΔP, wind², SST proxy, CE = V²·SST |
+| Flood | 10 | Precip 3d/7d/30d, snowmelt spike, wind, temp |
+
+### Step 4: Specialist Model Training
+- Stratified 80/20 train-test split
+- SMOTE oversampling on training split only
+- Optuna hyperparameter optimization (50 trials, 5-fold stratified CV)
+
+### Step 5: Satellite Segmentation Training
+- UNet and SegFormer-Lite trained on 25 Sentinel-2 images, validated on 5, tested on 7
+- Training augmentations: RandomRotate90, HorizontalFlip, VerticalFlip, GaussNoise, ElasticTransform
+- Optimizer: AdamW (lr=1e-3, weight decay=1e-4), CosineAnnealingLR over 20 epochs
+
+### Step 6: Fusion Learning
+- Specialist predictions on held-out 20% test splits form meta-features
+- Realistic background probability distributions for inactive modalities prevent leakage
+- Multimodal flood combiner: `P_fused = 0.5 × P_tabular + 0.5 × P_satellite`
+
+### Step 7: Autonomous Monitoring
+Continuous monitoring using:
+- KL-Divergence: `D_KL(P ∥ Q) = Σ P(xᵢ) · log[P(xᵢ)/Q(xᵢ)]`
+- Drift threshold δ = 0.10; F1 drop threshold ε = 0.05
+- Selective retraining of only affected specialist(s)
 
 ---
 
-## Step 3: Feature Engineering
-
-Features include:
-- Rainfall accumulation windows
-- Cyclone energy indices
-- Seismic magnitude-depth relations
-- Fire Weather Index features
-
----
-
-## Step 4: Specialist Model Training
-
-Independent specialist LightGBM models are trained on disaster-specific datasets.
-
-Techniques used:
-- Stratified train-test split
-- SMOTE balancing
-- Optuna hyperparameter optimization
-
----
-
-## Step 5: Satellite Segmentation Training
-
-UNet is trained on:
-- Sentinel-2 flood images
-- Ground truth flood masks
-
-Loss functions:
-- Dice Loss
-- Binary Cross Entropy
-
----
-
-## Step 6: Fusion Learning
-
-Specialist predictions are concatenated into meta-features and passed into the Fusion Meta-LightGBM learner.
-
----
-
-## Step 7: Autonomous Monitoring
-
-The system continuously monitors:
-- Data drift
-- Distribution shifts
-- Prediction stability
-
-using:
-- Jensen-Shannon Divergence
-- KL-Divergence
-
----
-
-# 7. Evaluation Metrics
-
-Multiple evaluation metrics are used to assess model performance.
+## 7. Evaluation Metrics
 
 | Metric | Purpose |
 |---|---|
@@ -271,184 +311,185 @@ Multiple evaluation metrics are used to assess model performance.
 | Precision | Correct positive predictions |
 | Recall | Disaster detection sensitivity |
 | F1 Score | Balance between precision and recall |
-| AUC-ROC | Class separability |
-| IoU | Flood segmentation quality |
+| AUC-ROC | Class separability across thresholds |
+| IoU | Flood segmentation spatial overlap quality |
 
 ---
 
-## Important Metrics
+## 8. Results
 
-### F1 Score
-
-The F1 score balances precision and recall.
-
-\[
-F1 = 2 \times \frac{Precision \times Recall}{Precision + Recall}
-\]
-
----
-
-### AUC-ROC
-
-AUC-ROC evaluates the model’s ability to distinguish disaster and non-disaster classes across all classification thresholds.
-
----
-
-### IoU (Intersection over Union)
-
-IoU measures segmentation overlap between predicted flood regions and ground truth masks.
-
----
-
-# 8. Results
-
-The proposed system demonstrates strong performance across multiple disaster domains.
-
----
-
-## Specialist Model Performance
+### Specialist Model Performance
 
 | Model | Accuracy | F1 Score | AUC-ROC | Precision | Recall | Events |
 |---|---|---|---|---|---|---|
 | Earthquake | 88.92% | 89.99% | 0.9451 | 88.5% | 91.6% | 11,680 |
 | Wildfire | 82.13% | 82.00% | 0.8898 | 83.1% | 80.9% | 2,153 |
-| Cyclone | 96.01% | 96.08% | 0.9920 | 96.3% | 95.8% | 34,409 |
-| Flood | 93.52% | 93.53% | 0.9847 | 93.6% | 93.5% | 3,574 |
+| Cyclone | 96.01% | 96.08% | **0.9920** | 96.3% | 95.8% | 34,409 |
+| Flood | 93.52% | 93.53% | **0.9847** | 93.6% | 93.5% | 3,574 |
+
+### Key Observations
+
+- Cyclone prediction achieved the highest performance with **AUC-ROC = 0.9920** — attributed to the strong physical separability of cyclone events in wind/pressure feature space
+- Flood prediction demonstrated strong generalization using multi-temporal precipitation accumulation windows
+- Earthquake prediction prioritized high recall (91.6%) to minimize missed disaster events
+- Wildfire performance affected by spatial label noise (FIRMS point-level vs EM-DAT country-month)
+
+### Fusion Meta-Learning Results
+
+- **5-Fold Cross-Validated Weighted F1 = 0.8004** (leakage-free, honest evaluation)
+- Strong multimodal class separability confirmed via meta-feature separability matrix
+- Compound disaster scenarios (cyclone + flood, earthquake + tsunami) handled via interaction features
+
+### Satellite Segmentation Results
+
+| Model | Parameters | Accuracy | IoU | F1 Score |
+|---|---|---|---|---|
+| **UNet** | 7.76M | **92.57%** | **11.47%** | **20.58%** |
+| SegFormer-Lite | 2.80M | 81.84% | 4.64% | 8.88% |
+
+UNet outperforms SegFormer-Lite confirming CNN inductive bias advantages on small satellite datasets (25 training images).
+
+### Autonomous Monitoring Results
+
+| Cycle | Drift D_KL | EQ F1 | WF F1 | CY F1 | FL F1 | Action |
+|---|---|---|---|---|---|---|
+| 1 | 0.0078 | 0.971 | 0.702 | 0.948 | 1.000 | Stable — No retraining |
+| 2 | 0.0490 | 0.971 | 0.702 | 0.948 | 1.000 | Stable — No retraining |
+| 3 | 0.0157 | 0.971 | 0.702 | 0.948 | 1.000 | Stable — No retraining |
+
+All drift magnitudes remained well below threshold δ = 0.10, confirming model stability.
 
 ---
 
-## Key Observations
+## 9. Screenshots / Outputs
 
-- Cyclone prediction achieved the highest performance with AUC-ROC = 0.9920
-- Flood prediction demonstrated strong generalization capability
-- Earthquake prediction prioritized high recall to minimize missed disaster events
-- Wildfire prediction performance was affected by spatial label noise
+### Prediction Output
+![Prediction Output](Architecture%20Diagram%20/prediction_output.png)
 
----
+### Satellite Segmentation Output
+![Segmentation 1](Architecture%20Diagram%20/segmentation_1.png)
+![Segmentation 2](Architecture%20Diagram%20/segmentation_2.png)
+![Segmentation 3](Architecture%20Diagram%20/segmentation_3.png)
 
-## Fusion Meta-Learning Results
-
-- 5-Fold Cross Validated Weighted F1 Score: **0.8004**
-- Strong multimodal class separability
-- Improved compound disaster handling
-
----
-
-## Satellite Segmentation Results
-
-| Model | Accuracy | IoU | F1 Score |
-|---|---|---|---|
-| UNet | 92.57% | 11.47% | 20.58% |
-| SegFormer-Lite | 81.84% | 4.64% | 8.88% |
+### Drift Detection Monitoring
+![Drift 1](Architecture%20Diagram%20/drift_1.png)
+![Drift 2](Architecture%20Diagram%20/drift_2.png)
+![Drift 3](Architecture%20Diagram%20/drift_3.png)
+![Drift 4](Architecture%20Diagram%20/drift_4.png)
+![Drift 5](Architecture%20Diagram%20/drift_5.png)
 
 ---
 
-# 9. Screenshots / Outputs
-
-## Prediction Output
-
-<img width="569" height="338" alt="image" src="https://github.com/user-attachments/assets/23159936-fd0a-453d-b4ed-7397bdd50eac" />
-
----
-
-## Satellite Segmentation Output
-<img width="811" height="372" alt="image" src="https://github.com/user-attachments/assets/4800a9e0-8d33-4588-9f6f-7cd5d192688a" />
-
-<img width="867" height="575" alt="image" src="https://github.com/user-attachments/assets/62d9fd0e-1f27-4952-b332-967f421ab4be" />
-
-<img width="940" height="423" alt="image" src="https://github.com/user-attachments/assets/507cf625-4639-4690-808a-70b634618e6c" />
-
-
----
-
-## Drift Detection Monitoring
-
-<img width="1744" height="625" alt="image" src="https://github.com/user-attachments/assets/70b5d397-1a4e-471c-88aa-4811d7f728e1" />
-<img width="1728" height="542" alt="image" src="https://github.com/user-attachments/assets/5b9f86f5-3d27-4ccc-b8de-5cbfdd5b2e05" />
-<img width="1735" height="644" alt="image" src="https://github.com/user-attachments/assets/5db6a99f-ba9a-47f6-b5e0-8d84ee1b7595" />
-<img width="1748" height="553" alt="image" src="https://github.com/user-attachments/assets/cb0753d9-93a8-4c9c-850a-32647489f430" />
-<img width="965" height="400" alt="image" src="https://github.com/user-attachments/assets/fa02b777-5c64-4390-9f42-54e3a3df0a6a" />
-
-
----
-
-# 10. Future Improvements
+## 10. Future Improvements
 
 Future enhancements may include:
 
-- Real-time disaster streaming pipelines
-- IoT sensor integration
-- Transformer-based multimodal learning
-- Physics-Informed Neural Networks (PINNs)
-- Cloud deployment
+- Real-time disaster streaming pipelines (Apache Kafka + Flink)
+- IoT sensor integration for ground-truth validation
+- Transformer-based multimodal learning (CLIP, ViT-based fusion)
+- Physics-Informed Neural Networks (PINNs) for geophysical modelling
+- Cloud deployment on AWS / GCP with REST API
 - Mobile disaster alert systems
-- Explainable AI (XAI)
-- Reinforcement learning for autonomous adaptation
+- Explainable AI (XAI) — SHAP, LIME for model interpretability
+- Reinforcement learning for autonomous adaptation strategies
+- Expansion to tsunami, landslide, and volcanic eruption prediction
 
 The framework can eventually evolve into a large-scale autonomous environmental intelligence platform for global disaster monitoring.
 
 ---
 
-# 11. Tech Stack
+## 11. Tech Stack
 
 | Category | Technologies |
 |---|---|
-| Programming Language | Python |
+| Programming Language | Python 3.10+ |
 | ML Framework | LightGBM, Scikit-learn |
-| Deep Learning | PyTorch |
-| Image Processing | OpenCV |
-| Visualization | Matplotlib, Seaborn |
-| Optimization | Optuna |
+| Deep Learning | PyTorch, segmentation-models-pytorch |
+| Image Processing | OpenCV, Albumentations, Rasterio |
+| Visualization | Matplotlib, Seaborn, Plotly |
+| Hyperparameter Optimization | Optuna |
+| Class Balancing | SMOTE (imbalanced-learn) |
 | Platform | Google Colab Pro |
-| Monitoring | Groq API, Drift Detection |
+| Monitoring | KL-Divergence, Groq API |
 | Version Control | GitHub |
 
 ---
 
-# 12. How to Run
+## 12. How to Run
 
-## Clone Repository
+### Clone Repository
 
 ```bash
 git clone https://github.com/SHANMUGAAPRIYANM/Multimodal-Disaster-Intelligence-System.git
+cd Multimodal-Disaster-Intelligence-System
 ```
 
----
-
-## Install Dependencies
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
+### Run Notebook
 
-## Run Notebook
+Open `Source/Multimodal_Disaster_Intelligence_System.ipynb` using:
 
-Open:
+- **Google Colab** (recommended — GPU required for segmentation training)
+- **Jupyter Notebook** with GPU support
 
 ```bash
-Multimodal_Disaster_Intelligence_System.ipynb
+jupyter notebook Source/Multimodal_Disaster_Intelligence_System.ipynb
 ```
 
-using:
-- Jupyter Notebook
-- Google Colab
-
----
-
-## Execute Pipeline
+### Execute Pipeline
 
 Run all notebook cells sequentially to:
-- preprocess datasets
-- train specialist models
-- perform segmentation
-- generate predictions
-- evaluate results
-- execute monitoring loop
+
+1. Ingest and preprocess all 6 datasets
+2. Engineer disaster-specific features
+3. Train 4 specialist LightGBM models (with SMOTE + Optuna)
+4. Train UNet satellite segmentation on WorldFloods v1.0
+5. Apply physics-informed hybrid scoring (Saffir-Simpson + FWI)
+6. Train leakage-free Fusion Meta-LightGBM
+7. Generate multimodal disaster predictions
+8. Execute autonomous monitoring loop (KL-divergence drift detection)
+
+> ⚠️ **Note:** Satellite segmentation (UNet/SegFormer-Lite) requires GPU. Use Google Colab Pro or a CUDA-enabled environment. All other pipeline components run on CPU.
 
 ---
 
-# Conclusion
+## Conclusion
 
 The proposed Multimodal Disaster Intelligence System demonstrates the effectiveness of combining multimodal AI, satellite segmentation, ensemble learning, and autonomous monitoring for disaster prediction. By integrating structured environmental data with computer vision and adaptive AI workflows, the framework moves toward intelligent and scalable disaster management systems capable of supporting future climate resilience applications.
+
+Specialist models achieve AUC-ROC values from **0.8898 to 0.9920**, with the leakage-free Fusion Meta-LightGBM achieving **CV weighted F1 = 0.8004**. The Autonomous AI Scientist loop correctly maintained stable models across all evaluation cycles with no unnecessary retraining.
+
+---
+
+## Citation
+
+If you use this work, please cite:
+
+```
+Shanmugaapriyan M, Dr. R.S. Ponmagal,
+"An Autonomous AI Scientist for Planet-Scale Disaster Prediction Using Multimodal 
+Satellite and Geophysical Data Fusion",
+Proceedings of ICRETM 2026 — 6th International Conference on Recent Trends in 
+Engineering Technology and Management, 2026.
+```
+
+---
+
+## Author
+
+**Shanmugaapriyan M**
+M.Tech — Artificial Intelligence & Data Science
+SRM Institute of Science and Technology, Kattankulathur
+
+[![GitHub](https://img.shields.io/badge/GitHub-SHANMUGAAPRIYANM-black?logo=github)](https://github.com/SHANMUGAAPRIYANM)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://linkedin.com/in/shanmugaapriyan-m-b6529a18a)
+[![Email](https://img.shields.io/badge/Email-shanmugaapriyan04%40gmail.com-red?logo=gmail)](mailto:shanmugaapriyan04@gmail.com)
+
+---
+
+*Licensed under the [MIT License](LICENSE)*
